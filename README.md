@@ -56,9 +56,9 @@ Git установлен, версия актуальная
 
 ## Задание 5
 ### Фиксация изменений
-![Меню]((https://github.com/Dreamcaster70/Software_engineering/blob/%D0%A2%D0%B5%D0%BC%D0%B0_1/pic/8.png)
-![Меню]((https://github.com/Dreamcaster70/Software_engineering/blob/%D0%A2%D0%B5%D0%BC%D0%B0_1/pic/9.png)
-![Меню]((https://github.com/Dreamcaster70/Software_engineering/blob/%D0%A2%D0%B5%D0%BC%D0%B0_1/pic/10.png)
+![Меню](https://github.com/Dreamcaster70/Software_engineering/blob/%D0%A2%D0%B5%D0%BC%D0%B0_1/pic/8.png)
+![Меню](https://github.com/Dreamcaster70/Software_engineering/blob/%D0%A2%D0%B5%D0%BC%D0%B0_1/pic/9.png)
+![Меню](https://github.com/Dreamcaster70/Software_engineering/blob/%D0%A2%D0%B5%D0%BC%D0%B0_1/pic/10.png)
 ## Выводы
 Фиксируем изменения командой git commit
 Смотреть коммиты - git log
