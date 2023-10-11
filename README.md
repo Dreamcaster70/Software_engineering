@@ -50,7 +50,7 @@ Git установлен, версия актуальная
   
 ## Задание 4
 ### Подготовка файлов
-![Меню]((https://github.com/Dreamcaster70/Software_engineering/blob/%D0%A2%D0%B5%D0%BC%D0%B0_1/pic/7.png))
+![Меню](https://github.com/Dreamcaster70/Software_engineering/blob/%D0%A2%D0%B5%D0%BC%D0%B0_1/pic/7.png)
 ## Выводы
 Файл добавлен
 
