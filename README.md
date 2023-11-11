@@ -48,7 +48,7 @@
 ### -
 
 ### Результат.
-![Меню](https://github.com/Dreamcaster70/Software_engineering/blob/Tema_6/pic6/lab/5%20-%20EdYUghO.png)
+![Меню](https://github.com/Dreamcaster70/Software_engineering/blob/Tema_6/pic6/lab/5.png)
 
 
 # Самостоятельная работа
