@@ -89,5 +89,5 @@
 ### Результат.
 ![Меню](https://github.com/Dreamcaster70/Software_engineering/blob/Tema_8/pic8/sam/5.png)
 ## Выводы
-Реализовал полиморфизм def print_oil_Info(oil)
+Реализовал полиморфизм def print_oil_Info(oil).
 Масла хорошие, рекомендую 
