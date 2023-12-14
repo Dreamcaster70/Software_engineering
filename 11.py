@@ -72,15 +72,7 @@ def time_left(message):
         change_date = last_change + datetime.timedelta(days=day_interval)
         change_date = datetime.datetime.strftime(change_date, '%d/%m/%Y')
         bot.send_message(user_id, f'Нужно заменить линзы {change_date}')
-    """ не получилось сделать отсчет до замены
-    if user_id in users and 'interval' in users[user_id]:
-        last_change = users[user_id]['last_change_date']
-        interval = users[user_id]['interval']
-        current_date = datetime.datetime.now().date() 
-        days_passed = (current_date - last_change)
-        days_left = interval - days_passed
-        bot.send_message(user_id, f'До замены осталось {days_left} дней')
-"""
+
 
 @bot.message_handler(commands=['interval'])
 def show_interval(message):
