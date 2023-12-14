@@ -4,7 +4,7 @@ import telebot
 from telebot import types
 import datetime
 
-TOKEN = 'Токен сюда'
+TOKEN = '6559849346:AAHXJmL5vy4VEvQ3CgagsglCrTDbMzv8_1o'
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -26,11 +26,11 @@ def send_reminder(user_id, interval):
 
 
 @bot.message_handler(commands=['start']) # /start
-def handle_start(message):
+def start(message):
     user_id = message.from_user.id # добываем уникальный user id из сообщения
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True) # это нужно чтоб добавить кнопки
     btn1 = types.KeyboardButton('/set_interval')
-    btn2 = types.KeyboardButton('/time_left') # кнопки
+    btn2 = types.KeyboardButton('/change_date') # кнопки
     btn3 = types.KeyboardButton('/interval')
     markup.add(btn1)
     markup.add(btn2) # добавить кнопки на экран
@@ -45,13 +45,13 @@ def handle_start(message):
 def set_interval(message):
     user_id = message.from_user.id
     msg = bot.send_message(user_id, "Введите количество дней через которое нужно менять линзы:")
-    bot.register_next_step_handler(msg, process_interval_step) # переходим к следующей функции, режим ожидания
+    bot.register_next_step_handler(msg, interval_step) # переходим к следующей функции, режим ожидания
 
 
-def process_interval_step(message):
+def interval_step(message):
     user_id = message.from_user.id
     try:
-        interval = int(message.text)*86400 # ввод интервала. Тут поменять чтоб проверить
+        interval = int(message.text)*86400# ввод интервала. Тут поменять чтоб проверить
         users[user_id]['interval'] = interval # в словарь добавляется интервал
 
         # Запуск потока для отправки напоминаний
@@ -60,9 +60,19 @@ def process_interval_step(message):
         bot.send_message(user_id, f"Отлично! Теперь я буду напоминать вам менять линзы каждые {int(interval/86400)} дней.")
     except ValueError:
         bot.send_message(user_id, "Введены неправильные данные, пожалуйста, введите число.")
-""" так и не получилось сделать(
-@bot.message_handler(commands=['time_left'])
-def time_left(user_id):
+
+@bot.message_handler(commands=['change_date'])
+def time_left(message):
+    user_id = message.from_user.id
+
+    if user_id in users and 'interval' in users[user_id]:
+        last_change = users[user_id]['last_change_date']
+        interval = users[user_id]['interval']
+        day_interval = interval/86400
+        change_date = last_change + datetime.timedelta(days=day_interval)
+        change_date = datetime.datetime.strftime(change_date, '%d/%m/%Y')
+        bot.send_message(user_id, f'Нужно заменить линзы {change_date}')
+    """ не получилось сделать отсчет до замены
     if user_id in users and 'interval' in users[user_id]:
         last_change = users[user_id]['last_change_date']
         interval = users[user_id]['interval']
@@ -76,7 +86,7 @@ def time_left(user_id):
 def show_interval(message):
     user_id = message.from_user.id
     if user_id in users and 'interval' in users[user_id]: # проверка заполнения словаря
-        interval = users[user_id]['interval']
+        interval = users[user_id]['interval'] # берем из словаря
         bot.send_message(user_id, f'Установлен интервал в {int(interval/86400)} дней')
     else:
         bot.send_message(user_id, 'Интервал не установлен. Используйте /set_interval, чтобы установить интервал')
